@@ -8,7 +8,7 @@ puts "Criando 50 livros para a BiblioAPI..."
     title: Faker::Book.unique.title,
     author: Faker::Book.author,
     isbn: Faker::Barcode.isbn,
-    available: [true, false].sample,
+    available: [ true, false ].sample,
     updated_at: Faker::Time.backward(days: 30)
   )
 end

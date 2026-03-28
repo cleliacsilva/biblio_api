@@ -35,6 +35,7 @@ gem "image_processing", "~> 1.2"
 gem "faker"
 gem "rexml"
 gem "active_model_serializers"
+gem "activemodel-serializers-xml"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
