@@ -16,8 +16,6 @@ module Api
       end
 
       def show
-        @book = Book.find(params[:id])
-
         respond_to do |format|
           # Resposta padrão (Compatibilidade)
           format.json { render json: @book } # application/json
