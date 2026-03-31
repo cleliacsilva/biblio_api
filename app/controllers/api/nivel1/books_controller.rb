@@ -4,9 +4,9 @@ module Api
       # GET /api/nivel1/books/get_all
       def get_all
         @books = Book.all
-        render json: { 
+        render json: {
           mensagem: "Lista de todos os livros (Nível 1: URI específica)",
-          dados: @books 
+          dados: @books
         }
       end
 
@@ -29,10 +29,10 @@ module Api
         )
 
         if @book.save
-          render json: { 
-            status: "Sucesso", 
+          render json: {
+            status: "Sucesso",
             mensagem: "Livro criado via URI de ação específica",
-            livro: @book 
+            livro: @book
           }
         else
           render json: { erro: "Falha ao criar" }, status: 400

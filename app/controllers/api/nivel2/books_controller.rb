@@ -22,7 +22,7 @@ module Api
         @book = Book.new(book_params)
 
         if @book.save
-          render json: @book, serializer: nil, status: :created 
+          render json: @book, serializer: nil, status: :created
         else
           render json: @book.errors, status: :unprocessable_entity
         end

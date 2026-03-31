@@ -25,5 +25,10 @@ Rails.application.routes.draw do
     namespace :nivel3 do
       resources :books
     end
+
+    #  É o contrato que garante que o cliente e o servidor falem a mesma língua.
+    namespace :media_types do
+      resources :books
+    end
   end
 end

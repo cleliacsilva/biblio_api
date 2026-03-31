@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   def self.to_csv
-    attributes = %w{id title author isbn available}
+    attributes = %w[id title author isbn available]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
