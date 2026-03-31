@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
+    #### MATURIDADE DE RICHARDSON ####
+
     # Nível 0: O Pântano do POX
     # Não usamos verbos HTTP nem múltiplas URIs. Existe apenas um "ponto de entrada" (endpoint) que recebe tudo via POST.
     namespace :nivel0 do
@@ -26,9 +28,29 @@ Rails.application.routes.draw do
       resources :books
     end
 
-    #  É o contrato que garante que o cliente e o servidor falem a mesma língua.
+
+    ### MEDIA TYPES ####
+
     namespace :media_types do
       resources :books
+    end
+
+    ### VERSIONAMENTOS ####
+
+    namespace :headers do
+      resources :books, only: :show
+    end
+
+    namespace :url do
+      resources :books, only: :show
+    end
+
+    namespace :v1 do
+      resources :books, only: :show
+    end
+
+    namespace :v2 do
+      resources :books, only: :show
     end
   end
 end
