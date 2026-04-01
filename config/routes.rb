@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
-    #### MATURIDADE DE RICHARDSON ####
+    ##########################################
+    ######## MATURIDADE DE RICHARDSON ########
+    ##########################################
 
     # Nível 0: O Pântano do POX
     # Não usamos verbos HTTP nem múltiplas URIs. Existe apenas um "ponto de entrada" (endpoint) que recebe tudo via POST.
@@ -28,14 +30,17 @@ Rails.application.routes.draw do
       resources :books
     end
 
-
-    ### MEDIA TYPES ####
+    ##########################################
+    ############### MEDIA TYPES ##############
+    ##########################################
 
     namespace :media_types do
       resources :books
     end
 
-    ### VERSIONAMENTOS ####
+    ##########################################
+    ############# VERSIONAMENTOS #############
+    ##########################################
 
     namespace :headers do
       resources :books, only: :show
@@ -51,6 +56,15 @@ Rails.application.routes.draw do
 
     namespace :v2 do
       resources :books, only: :show
+    end
+
+    ##########################################
+    ############# CACHES #############
+    ##########################################
+
+    namespace :caches do
+      resources :books, only: [:index, :show]
+      get "books/:id/permanent_info", to: "books#permanent_info"
     end
   end
 end
