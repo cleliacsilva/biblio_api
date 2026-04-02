@@ -1,18 +1,18 @@
-module Api
-  module Nivel3
+module Maturidade
+  module Nivel2
     class BooksController < ApplicationController
       before_action :set_book, only: %i[ show update destroy ]
 
       def index
         @books = Book.all
 
-        render json: @books, status: :ok
+        render json: @books, serializer: nil, status: :ok
       end
 
       def show
         @book = Book.find(params[:id])
         if @book
-          render json: @book, serializer: BookSerializer, status: :ok
+          render json: @book, serializer: nil, status: :ok
         else
           render json: { error: "Book not found" }, status: :not_found
         end
@@ -22,7 +22,7 @@ module Api
         @book = Book.new(book_params)
 
         if @book.save
-          render json: @book, serializer: BookSerializer, status: :created
+          render json: @book, serializer: nil, status: :created
         else
           render json: @book.errors, status: :unprocessable_entity
         end
@@ -30,7 +30,7 @@ module Api
 
       def update
         if @book.update(book_params)
-          render json: @book, serializer: BookSerializer, status: :ok
+          render json: @book, serializer: nil, status: :ok
         else
           render json: @book.errors, status: :unprocessable_content
         end

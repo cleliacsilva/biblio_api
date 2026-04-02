@@ -1,4 +1,4 @@
-module Api
+module Maturidade
   module Nivel0
     class RpcController < ApplicationController
       # POST /api/nivel0/rpc/execute

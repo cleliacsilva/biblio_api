@@ -1,8 +1,8 @@
 require "csv"
 
-module Api
+module Versionamento
   module Headers
-    class BooksController < Api::MediaTypes::ApplicationController
+    class BooksController < ApplicationController
       def show
         @book = Book.find(params[:id])
         respond_to do |format|

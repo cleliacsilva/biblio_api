@@ -1,4 +1,4 @@
-module Api
+module Maturidade
   module Nivel1
     class BooksController < ApplicationController
       # GET /api/nivel1/books/get_all

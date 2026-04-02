@@ -1,4 +1,4 @@
-module Api
+module Versionamento
   module V2
     class BooksController < ApplicationController
       def show

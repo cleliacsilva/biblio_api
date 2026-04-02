@@ -1,4 +1,4 @@
-module Api
+module Versionamento
   module Url
     class BooksController < ApplicationController
       def show
