@@ -74,12 +74,17 @@ Rails.application.routes.draw do
       resources :books, only: :index
     end
 
-    namespace :jwt do
-      post "auth/login", to: "authentication#login"
+    namespace :api_key do
       resources :books, only: :index
     end
 
-    namespace :api_key do
+    namespace :bearer do
+      post "login", to: "sessions#create"
+      resources :books, only: :index
+    end
+
+    namespace :jwt do
+      post "auth/login", to: "authentication#login"
       resources :books, only: :index
     end
   end
