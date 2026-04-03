@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_03_174309) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_03_192632) do
   create_table "api_keys", force: :cascade do |t|
     t.boolean "active", default: true
     t.datetime "created_at", null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_03_174309) do
     t.string "email"
     t.string "name"
     t.string "password_digest"
+    t.string "provider"
+    t.string "uid"
     t.datetime "updated_at", null: false
   end
 

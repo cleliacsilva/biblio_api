@@ -35,6 +35,8 @@ gem "active_model_serializers"
 gem "activemodel-serializers-xml"
 gem "jwt"
 gem "bcrypt", "~> 3.1.7"
+gem "omniauth-google-oauth2"
+gem "omniauth-github"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"

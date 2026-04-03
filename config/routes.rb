@@ -87,5 +87,10 @@ Rails.application.routes.draw do
       post "auth/login", to: "authentication#login"
       resources :books, only: :index
     end
+
+    namespace :oauth do
+      get "callback", to: "sessions#callback"
+      resources :books, only: :index
+    end
   end
 end
