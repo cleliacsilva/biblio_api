@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_01_203709) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_03_151007) do
+  create_table "api_keys", force: :cascade do |t|
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.string "key"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_api_keys_on_key", unique: true
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "author"
     t.boolean "available"

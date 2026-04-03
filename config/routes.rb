@@ -78,5 +78,9 @@ Rails.application.routes.draw do
       post "auth/login", to: "authentication#login"
       resources :books, only: :index
     end
+
+    namespace :api_key do
+      resources :books, only: :index
+    end
   end
 end
