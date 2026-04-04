@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  namespace :api do
-    ##########################################
-    ######## MATURIDADE DE RICHARDSON ########
-    ##########################################
-
+  ##########################################
+  ######## MATURIDADE DE RICHARDSON ########
+  ##########################################
+  namespace :maturidade do
     # Nível 0: O Pântano do POX
     # Não usamos verbos HTTP nem múltiplas URIs. Existe apenas um "ponto de entrada" (endpoint) que recebe tudo via POST.
     namespace :nivel0 do
@@ -29,19 +28,19 @@ Rails.application.routes.draw do
     namespace :nivel3 do
       resources :books
     end
+  end
 
-    ##########################################
-    ############### MEDIA TYPES ##############
-    ##########################################
+  ##########################################
+  ############### MEDIA TYPES ##############
+  ##########################################
+  namespace :media_type do
+    resources :books
+  end
 
-    namespace :media_types do
-      resources :books
-    end
-
-    ##########################################
-    ############# VERSIONAMENTOS #############
-    ##########################################
-
+  ##########################################
+  ############# VERSIONAMENTOS #############
+  ##########################################
+  namespace :versionamento do
     namespace :headers do
       resources :books, only: :show
     end
@@ -57,14 +56,41 @@ Rails.application.routes.draw do
     namespace :v2 do
       resources :books, only: :show
     end
+  end
 
-    ##########################################
-    ############# CACHES #############
-    ##########################################
+  ##########################################
+  ############# CACHES #############
+  ##########################################
+  namespace :cache do
+    resources :books, only: [:index, :show]
+    get "books/:id/permanent_info", to: "books#permanent_info"
+  end
 
-    namespace :caches do
-      resources :books, only: [:index, :show]
-      get "books/:id/permanent_info", to: "books#permanent_info"
+  ##########################################
+  ############# SEGURANÇA #############
+  ##########################################
+  namespace :seguranca do
+    namespace :basic do
+      resources :books, only: :index
+    end
+
+    namespace :api_key do
+      resources :books, only: :index
+    end
+
+    namespace :bearer do
+      post "login", to: "sessions#create"
+      resources :books, only: :index
+    end
+
+    namespace :jwt do
+      post "auth/login", to: "authentication#login"
+      resources :books, only: :index
+    end
+
+    namespace :oauth do
+      get "callback", to: "sessions#callback"
+      resources :books, only: :index
     end
   end
 end

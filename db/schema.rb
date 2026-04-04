@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_24_184614) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_03_192632) do
+  create_table "api_keys", force: :cascade do |t|
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.string "key"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_api_keys_on_key", unique: true
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "author"
     t.boolean "available"
@@ -19,4 +28,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_24_184614) do
     t.string "title"
     t.datetime "updated_at", null: false
   end
+
+  create_table "user_tokens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "expires_at"
+    t.string "token"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["token"], name: "index_user_tokens_on_token"
+    t.index ["user_id"], name: "index_user_tokens_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "name"
+    t.string "password_digest"
+    t.string "provider"
+    t.string "uid"
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "user_tokens", "users"
 end

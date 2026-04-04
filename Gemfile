@@ -9,9 +9,6 @@ gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -36,6 +33,10 @@ gem "faker"
 gem "rexml"
 gem "active_model_serializers"
 gem "activemodel-serializers-xml"
+gem "jwt"
+gem "bcrypt", "~> 3.1.7"
+gem "omniauth-google-oauth2"
+gem "omniauth-github"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
@@ -54,4 +55,5 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "pry"
+  gem "dotenv-rails"
 end

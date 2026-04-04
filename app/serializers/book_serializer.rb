@@ -5,9 +5,9 @@ class BookSerializer < ActiveModel::Serializer
 
   def links
     {
-      self: api_nivel3_book_url(object),
-      update: { href: api_nivel3_book_url(object), method: "PATCH" },
-      delete: { href: api_nivel3_book_url(object), method: "DELETE" }
+      self: maturidade_nivel3_book_url(object),
+      update: { href: maturidade_nivel3_book_url(object), method: "PATCH" },
+      delete: { href: maturidade_nivel3_book_url(object), method: "DELETE" }
     }
   end
 
