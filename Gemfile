@@ -37,6 +37,7 @@ gem "jwt"
 gem "bcrypt", "~> 3.1.7"
 gem "omniauth-google-oauth2"
 gem "omniauth-github"
+gem "rack-cors"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
@@ -56,4 +57,12 @@ group :development, :test do
 
   gem "pry"
   gem "dotenv-rails"
+
+  gem "rspec-rails", "~> 6.0.0"
+  gem "factory_bot_rails"
+  gem "faker"
+
+  gem "rswag-api"
+  gem "rswag-ui"
+  gem "rswag-specs"
 end

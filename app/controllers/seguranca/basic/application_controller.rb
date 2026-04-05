@@ -16,4 +16,3 @@ module Seguranca
     end
   end
 end
-
