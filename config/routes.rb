@@ -95,5 +95,10 @@ Rails.application.routes.draw do
       get "callback", to: "sessions#callback"
       resources :books, only: :index
     end
+
+    namespace :rate_limiting do
+      # Rota que sofrerá o bloqueio 429
+      resources :books, only: :index
+    end
   end
 end
