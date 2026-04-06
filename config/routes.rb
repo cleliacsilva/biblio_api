@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
+
   ##########################################
   ######## MATURIDADE DE RICHARDSON ########
   ##########################################
@@ -62,7 +65,7 @@ Rails.application.routes.draw do
   ############# CACHES #############
   ##########################################
   namespace :cache do
-    resources :books, only: [:index, :show]
+    resources :books, only: [ :index, :show ]
     get "books/:id/permanent_info", to: "books#permanent_info"
   end
 

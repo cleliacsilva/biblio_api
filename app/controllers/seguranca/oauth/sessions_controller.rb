@@ -13,7 +13,7 @@ module Seguranca
         if user.save
           # 3. Agora que ele tem um ID, podemos criar o token
           token = user.user_tokens.create!
-          render json: { 
+          render json: {
             access_token: token.token,
             token_type: "Bearer"
           }, status: :ok

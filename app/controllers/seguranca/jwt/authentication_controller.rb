@@ -14,5 +14,5 @@ module Seguranca
         end
       end
     end
-  end 
+  end
 end

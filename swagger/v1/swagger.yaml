@@ -1,0 +1,155 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/maturidade/nivel0/biblioteca_rpc":
+    post:
+      summary: 'Nível 0: RPC (Pântano do POX)'
+      tags:
+      - Maturidade de Richardson
+      parameters: []
+      responses:
+        '200':
+          description: Comando executado (Mesmo em erro, retorna 200)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command:
+                  type: string
+                  example: get_book
+                id:
+                  type: integer
+                  example: 1
+  "/maturidade/nivel1/books/get_all":
+    get:
+      summary: 'Nível 1: Listar Todos'
+      tags:
+      - Maturidade de Richardson
+      responses:
+        '200':
+          description: Livros encontrados
+  "/maturidade/nivel2/books":
+    get:
+      summary: Lista livros
+      tags:
+      - Maturidade - Nível 2
+      responses:
+        '200':
+          description: sucesso
+    post:
+      summary: 'Nível 2: Criar (POST)'
+      tags:
+      - Maturidade de Richardson
+      parameters: []
+      responses:
+        '201':
+          description: Criado
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+  "/media_type/books":
+    get:
+      summary: Listar Livros com Media Types Diferentes
+      tags:
+      - Media Types
+      responses:
+        '200':
+          description: Retorno em XML
+  "/media_type/books/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Exibir Livro com Vendor Types
+      tags:
+      - Media Types
+      responses:
+        '200':
+          description: Versão 2 do Contrato (Reduzido)
+  "/versionamento/url/books/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Versionamento por URL
+      tags:
+      - Versionamento
+      responses:
+        '200':
+          description: v1 ou v2 via URL
+  "/seguranca/api_key/books":
+    get:
+      summary: 'Segurança: API Key'
+      tags:
+      - Segurança
+      parameters:
+      - name: X-Api-Key
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Acesso autorizado via Header
+  "/seguranca/basic/books":
+    get:
+      summary: 'Segurança: Basic Auth'
+      tags:
+      - Segurança
+      security:
+      - basic_auth: []
+      responses:
+        '200':
+          description: Usuário autenticado com sucesso
+        '401':
+          description: Acesso negado - Credenciais inválidas
+  "/seguranca/bearer/books":
+    get:
+      summary: 'Segurança: Bearer Token'
+      tags:
+      - Segurança
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: Token válido no banco
+  "/seguranca/jwt/books":
+    get:
+      summary: 'Segurança: JWT'
+      tags:
+      - Segurança
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: JWT decodificado com sucesso
+  "/cache/books":
+    get:
+      summary: Listagem com Cache
+      tags:
+      - Cache
+      responses:
+        '200':
+          description: Retorno com ETag/Last-Modified
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: http://localhost:3000
