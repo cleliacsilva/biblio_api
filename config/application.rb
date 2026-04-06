@@ -19,5 +19,7 @@ module BiblioApi
         controller_specs: false,
         request_specs: true
     end
+
+    config.middleware.use Rack::Attack
   end
 end
