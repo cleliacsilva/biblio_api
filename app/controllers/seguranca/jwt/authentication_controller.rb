@@ -7,8 +7,8 @@ module Seguranca
         @user = User.find_by(email: params[:email])
 
         if @user&.authenticate(params[:password])
-          token = JwtService.encode(user_id: @user.id)
-          render json: { token: token, user: @user.name }, status: :ok
+          token, exp = JwtService.encode(user_id: @user.id)
+          render json: { token: token, exp: exp, user: @user.name }, status: :ok
         else
           render json: { error: "Email ou senha inválidos" }, status: :unauthorized
         end
