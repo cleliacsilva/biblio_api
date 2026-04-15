@@ -1,9 +1,9 @@
 puts "Limpando banco de dados..."
 Book.destroy_all
 
-puts "Criando 50 livros para a BiblioAPI..."
+puts "Criando 100 livros para a BiblioAPI..."
 
-50.times do |i|
+100.times do |i|
   Book.create!(
     title: Faker::Book.unique.title,
     author: Faker::Book.author,

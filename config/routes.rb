@@ -34,6 +34,20 @@ Rails.application.routes.draw do
   end
 
   ##########################################
+  ######## VERBOS HTTP ########
+  ##########################################
+  namespace :verbos_http do
+    resources :books do
+      collection do
+        match "/", to: "books#options", via: :options
+      end
+      member do
+        match "/", to: "books#options", via: :options
+      end
+    end
+  end
+
+  ##########################################
   ############### MEDIA TYPES ##############
   ##########################################
   namespace :media_type do
@@ -66,7 +80,6 @@ Rails.application.routes.draw do
   ##########################################
   namespace :cache do
     resources :books, only: [ :index, :show ]
-    get "books/:id/permanent_info", to: "books#permanent_info"
   end
 
   ##########################################
@@ -74,6 +87,10 @@ Rails.application.routes.draw do
   ##########################################
   namespace :seguranca do
     namespace :basic do
+      resources :books, only: :index
+    end
+
+    namespace :digest do
       resources :books, only: :index
     end
 

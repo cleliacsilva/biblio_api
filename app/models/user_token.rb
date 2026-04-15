@@ -10,6 +10,6 @@ class UserToken < ApplicationRecord
 
   def generate_token
     self.token = SecureRandom.hex(32)
-    self.expires_at ||= 1.minute.from_now
+    self.expires_at ||= 2.hours.from_now
   end
 end

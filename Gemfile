@@ -35,8 +35,7 @@ gem "active_model_serializers"
 gem "activemodel-serializers-xml"
 
 ###### SEGURANÇA E AUTENTICAÇÃO ########
-# JWT e OAuth para autenticação
-gem "jwt"
+# OAuth para autenticação
 gem "bcrypt", "~> 3.1.7"
 gem "omniauth-google-oauth2"
 gem "omniauth-github"
