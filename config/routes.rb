@@ -109,7 +109,8 @@ Rails.application.routes.draw do
     end
 
     namespace :oauth do
-      get "callback", to: "sessions#callback"
+      get "github", to: "sessions#redirect_github" # O usuário clica aqui
+      get "callback", to: "sessions#callback"     # O GitHub devolve aqui
       resources :books, only: :index
     end
 
