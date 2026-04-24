@@ -60,7 +60,7 @@ group :development, :test do
   gem "pry"
   gem "dotenv-rails"
 
-  gem "rspec-rails", "~> 6.0.0"
+  gem "rspec-rails", "~> 8.0.4"
   gem "factory_bot_rails"
   gem "faker"
 
