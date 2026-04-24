@@ -8,7 +8,7 @@ module Seguranca
         header = header.split(" ").last if header
         begin
           @decoded = JwtService.decode(header)
-          @current_user = User.find(@decoded[:user_id]) if @decoded
+          @current_user = User.find(@decoded["user_id"]) if @decoded
         rescue ActiveRecord::RecordNotFound => e
           render json: { errors: e.message }, status: :unauthorized
         rescue JWT::DecodeError => e
